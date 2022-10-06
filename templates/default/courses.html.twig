@@ -1,0 +1,42 @@
+{% extends 'default/shell.html.twig' %}
+
+
+{% block content %}
+   <style>
+        .course {
+            min-width: 100px;
+            min-height: 100px;
+            display:inline-block;
+            background-color: darkblue;
+            margin: 20px;
+            font-size: 2em;
+            color: white;
+            padding: 20px;
+        }
+
+        .course.disabled {
+            background-color: black;
+        }
+    </style>
+
+   {% for course in courses %}
+
+        <div class="course"> 
+            <p>Name: {{ course.name }}</p>
+            <p>Description: {{ course.description}} </p>
+            <p>Price: {{ course.price}} </p>
+            <p>Start: {{ course.start_dt}} </p>
+            <p>End: {{ course.end_dt}} </p>
+
+            {% if is_granted("ROLE_USER") and not hide_options is defined%}
+                <form method="POST" action="{{ path(options['route_name']) }}">
+                    <input type="hidden" name="course_id" value="{{ course.id }}"/>
+                    <input type="submit" value="{{ options['button_value'] }} "/>
+                </form>
+            {% endif %}
+
+        </div>
+
+   {% endfor %}
+
+{% endblock %}

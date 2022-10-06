@@ -1,0 +1,11 @@
+{% extends 'default/shell.html.twig' %}
+
+{% block content %}
+   <section id="marked-content">
+        {{  pimcore_wysiwyg("specialContent", {
+                "height": 200
+            }) 
+        }}
+    </section>
+
+{% endblock %}
