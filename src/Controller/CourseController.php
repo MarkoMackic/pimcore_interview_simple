@@ -50,13 +50,13 @@ class CourseController extends FrontendController
         
         return $this->render('default/courses.html.twig', ['courses' => $this->getAllCourses(), 'options'=>$opts]);
     }
+    
     /**
     * @param Request $request
     * @return Response
     * @Route("/booked_courses", name="booked_courses", methods = {"GET"})
     * @IsGranted("ROLE_USER")
     */
-    
     public function bookedCourses(Request $request): Response
     {
         $bookings = new Blist();
