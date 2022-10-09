@@ -12,8 +12,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends FrontendController
 {
     /**
-     * @Param Request
-     * @Param AuthenticationUtils
+     * @param Request
+     * @param AuthenticationUtils
      * @Route("/login", name="login")
      */
     public function login(Request $req, AuthenticationUtils $au): Response
